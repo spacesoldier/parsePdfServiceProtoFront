@@ -93,7 +93,8 @@
 
         formData.append('inputPdf', fileWithUsers.files[0]);
         fetch(
-            '/api/loadfiles',
+            //'/api/loadfiles',
+            'https://genplan.leaderhackdemo.pro/api/loadfiles',
             {
                 method: 'POST',
                 body: formData
