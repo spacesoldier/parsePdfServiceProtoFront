@@ -36,7 +36,7 @@
 
 
         $(document).ready(function () {
-//below code executes on file input change and append name in text control
+            //below code executes on file input change and append name in text control
             $(':file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
@@ -85,8 +85,43 @@
     function sendPdfToParser(){
         const formData = new FormData();
         const fileWithUsers = document.querySelector('input[type="file"]');
+
+        if (fileWithUsers.files.length === 0) {
+            alert("Файл не выбран!");
+            return;
+        }
+
         formData.append('inputPdf', fileWithUsers.files[0]);
+        fetch(
+            '/api/loadfiles',
+            {
+                method: 'POST',
+                body: formData
+            }
+        )
+            .then(
+                result => {
+
+                    if (result.data !== undefined){
+
+                        let statusList = result.data.processResults;
+
+                        if ( statusList!== undefined){
+                            if (Array.isArray(statusList)){
+                                statusList.forEach(
+                                    result => {
+                                        $("#parsingresults").append('<li>'+result.name+' '+result.status+'</li>');
+                                    }
+                                )
+                            }
+                        }
+                    }
+
+
+                }
+            );
     }
+
 
     function getParsingResults(){
         console.log("get results for document: ")
@@ -138,11 +173,9 @@
 
             </div>
 
-            <div id="results" class="inner cover">
-                <ul>
-                    <li>
-                        <div><button onclick="">Результат</button></div>
-                    </li>
+            <div id="results-container" class="inner cover">
+                <ul id="parsingresults">
+
                 </ul>
 
             </div>
