@@ -54,32 +54,38 @@
     });
 
 
-    function getParsedPdf() {
+    // function getParsedPdf() {
+    //     const formData = new FormData();
+    //     const fileWithUsers = document.querySelector('input[type="file"]');
+    //
+    //     if (fileWithUsers.files.length === 0) {
+    //         alert("Файл не выбран!");
+    //         return;
+    //     }
+    //
+    //     formData.append('inputPdf', fileWithUsers.files[0]);
+    //     fetch('/inputPdf/get', {
+    //         method: 'POST',
+    //         body: formData
+    //     })
+    //         .then(resp => resp.blob())
+    //         .then(blob => {
+    //             const url = window.URL.createObjectURL(blob);
+    //             const a = document.createElement('a');
+    //             a.style.display = 'none';
+    //             a.href = url;
+    //             // the filename you want
+    //             a.download = 'inputPdf.zip';
+    //             document.body.appendChild(a);
+    //             a.click();
+    //             window.URL.revokeObjectURL(url);
+    //         });
+    // }
+
+    function sendPdfToParser(){
         const formData = new FormData();
         const fileWithUsers = document.querySelector('input[type="file"]');
-
-        if (fileWithUsers.files.length === 0) {
-            alert("Файл не выбран!");
-            return;
-        }
-
         formData.append('inputPdf', fileWithUsers.files[0]);
-        fetch('/inputPdf/get', {
-            method: 'POST',
-            body: formData
-        })
-            .then(resp => resp.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                // the filename you want
-                a.download = 'inputPdf.zip';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-            });
     }
 
     function getParsingResults(){
@@ -121,16 +127,24 @@
                 </div>
                 <button type="submit"
                         class="btn btn-outline-secondary btn-block"
-                        onclick="getParsedPdf()">Загрузить
+                        onclick="sendPdfToParser()">Загрузить
                 </button>
             </div>
 
             <div class="inner cover">
-                <button onclick="">Результат</button>
+
+                <h3 class="cover-heading">Результаты разбора</h3>
+
+
             </div>
 
-            <div>
-                <div></div>
+            <div id="results" class="inner cover">
+                <ul>
+                    <li>
+                        <div><button onclick="">Результат</button></div>
+                    </li>
+                </ul>
+
             </div>
 
             <div class="mastfoot">
