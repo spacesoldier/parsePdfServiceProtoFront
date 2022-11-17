@@ -81,6 +81,10 @@
                 window.URL.revokeObjectURL(url);
             });
     }
+
+    function getParsingResults(){
+        console.log("get results for document: ")
+    }
 </script>
 
 <div class="site-wrapper">
@@ -119,6 +123,14 @@
                         class="btn btn-outline-secondary btn-block"
                         onclick="getParsedPdf()">Загрузить
                 </button>
+            </div>
+
+            <div class="inner cover">
+                <button onclick="">Результат</button>
+            </div>
+
+            <div>
+                <div></div>
             </div>
 
             <div class="mastfoot">
