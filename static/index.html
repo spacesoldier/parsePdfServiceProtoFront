@@ -22,6 +22,75 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Котигры</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="index.html">Парсинг генпланов в формате pdf</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Распарсить PDF-файлы</h1>
+                <p class="lead">Загрузите файл в формате pdf</p>
+
+                <div class="input-group">
+                    <label class="input-group-btn">
+                    <span class="btn btn-outline-secondary">
+                        pdf-файл<input type="file"
+                                       id="pdfParser" name="pdfParser"
+                                       accept="application/pdf"
+                                       style="display: none;" multiple>
+                    </span>
+                    </label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <button type="submit"
+                        class="btn btn-outline-secondary btn-block"
+                        onclick="sendPdfToParser()">Загрузить
+                </button>
+            </div>
+
+            <div class="inner cover">
+
+                <h3 class="cover-heading">Результаты разбора</h3>
+
+
+            </div>
+
+            <div id="results-container" class="inner cover">
+                <ul id="parsingresults">
+
+                </ul>
+
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Проект в рамках хакатона "Лига цифровой трансформации"</p>
+                    <p>Исходный код бекенда</p>
+                    <h4><a>https://github.com/spacesoldier/parsePdfServicePrototype</a></h4>
+                    <p>Исходный код фронта</p>
+                    <h4><a>https://github.com/spacesoldier/parsePdfServiceProtoFront</a></h4>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script type="application/javascript">
 
     $(function () {
@@ -129,73 +198,6 @@
     }
 </script>
 
-<div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand">Котигры</h3>
-                    <nav>
-                        <ul class="nav masthead-nav">
-                            <li class="active"><a href="index.html">Парсинг генпланов в формате pdf</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="inner cover">
-                <h1 class="cover-heading">Распарсить PDF-файлы</h1>
-                <p class="lead">Загрузите файл в формате pdf</p>
-
-                <div class="input-group">
-                    <label class="input-group-btn">
-                    <span class="btn btn-outline-secondary">
-                        pdf-файл<input type="file"
-                                       id="pdfParser" name="pdfParser"
-                                       accept="application/pdf"
-                                       style="display: none;" multiple>
-                    </span>
-                    </label>
-                    <input type="text" class="form-control" readonly>
-                </div>
-                <button type="submit"
-                        class="btn btn-outline-secondary btn-block"
-                        onclick="sendPdfToParser()">Загрузить
-                </button>
-            </div>
-
-            <div class="inner cover">
-
-                <h3 class="cover-heading">Результаты разбора</h3>
-
-
-            </div>
-
-            <div id="results-container" class="inner cover">
-                <ul id="parsingresults">
-
-                </ul>
-
-            </div>
-
-            <div class="mastfoot">
-                <div class="inner">
-                    <p>Проект в рамках хакатона "Лига цифровой трансформации"</p>
-                    <p>Исходный код бекенда</p>
-                    <h4><a>https://github.com/spacesoldier/parsePdfServicePrototype</a></h4>
-                    <p>Исходный код фронта</p>
-                    <h4><a>https://github.com/spacesoldier/parsePdfServiceProtoFront</a></h4>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 </body>
 </html>
