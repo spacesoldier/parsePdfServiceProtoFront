@@ -17,7 +17,7 @@ function initClient() {
 }
 
 var itemStatusValues = {
-    "OK": "Загружен успешно"
+    "RECEIVED OK": "Загружен успешно"
 }
 
 function addListItem(itemName, itemStatus){
