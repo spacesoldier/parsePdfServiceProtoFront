@@ -96,7 +96,7 @@ function uploadFiles(){
                     function(response) {
                         console.log(response.data)
                         console.log(response.data.url)
-                        fillFilesReport(response);
+                        fillFilesReport(response.data);
                     }
                 )
         .catch(
