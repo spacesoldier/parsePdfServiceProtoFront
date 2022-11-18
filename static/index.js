@@ -7,7 +7,7 @@ $(document).ready(
     );
 
 const api = axios.create({
-    baseURL: '/api/',
+    baseURL: 'https://genplan.leaderhackdemo.pro/api/',
     timeout: 120000,
 });
 
