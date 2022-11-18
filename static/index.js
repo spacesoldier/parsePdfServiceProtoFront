@@ -6,6 +6,11 @@ $(document).ready(
         }
     );
 
+const api = axios.create({
+    baseURL: 'api/',
+    timeout: 120000,
+});
+
 function initClient() {
     console.log("[INIT]: app initialization");
 }
@@ -39,21 +44,36 @@ function uploadFiles(){
 
     console.log("[LOADER]: uploading pdf files to server");
 
-    axios.post(
-                "/api/loadfiles",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                    onUploadProgress: progressEvent => {
-                        const percentCompleted = Math.round(
-                            (progressEvent.loaded * 100) / progressEvent.total
-                        );
-                        console.log(`[LOADER]: upload process: ${percentCompleted}%`);
-                    }
-                }
-        )
+    // axios.post(
+    //             "/api/loadfiles",
+    //             formData,
+    //             {
+    //                 headers: {
+    //                     "Content-Type": "multipart/form-data",
+    //                 },
+    //                 onUploadProgress: progressEvent => {
+    //                     const percentCompleted = Math.round(
+    //                         (progressEvent.loaded * 100) / progressEvent.total
+    //                     );
+    //                     console.log(`[LOADER]: upload process: ${percentCompleted}%`);
+    //                 }
+    //             }
+    //     )
+    api.post(
+        {
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            onUploadProgress: progressEvent => {
+                                    const percentCompleted = Math.round(
+                                                                        (progressEvent.loaded * 100) /
+                                                                            progressEvent.total
+                                                                        );
+                                    console.log(`[LOADER]: upload process: ${percentCompleted}%`);
+                                }
+        }
+    )
         .then(
                     function(response) {
                         console.log(response.data)
