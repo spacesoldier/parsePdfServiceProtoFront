@@ -61,8 +61,8 @@ function uploadFiles(){
     //     )
     api.post(
         "loadfiles",
+        formData,
         {
-            data: formData,
             headers: {
                 "Content-Type": "multipart/form-data",
             },
