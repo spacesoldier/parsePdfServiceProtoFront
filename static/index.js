@@ -45,6 +45,17 @@ function fillFilesReport(fileResponse){
 
 }
 
+function showProgressBar(){
+    $("#uploadProgress").show();
+}
+
+function updateProgressBar(newValue){
+    $("#uploadProgress").attr("aria-valuenow",newValue);
+}
+
+function hideProgressBar(){
+    $("#uploadProgress").hide();
+}
 
 function uploadFiles(){
 
@@ -55,6 +66,8 @@ function uploadFiles(){
         alert('please choose a file')
         return
     }
+
+    showProgressBar();
 
     let files = fileElement.files;
 
@@ -90,6 +103,7 @@ function uploadFiles(){
                                                                         (progressEvent.loaded * 100) /
                                                                             progressEvent.total
                                                                         );
+                                    updateProgressBar(percentCompleted);
                                     console.log(`[LOADER]: upload process: ${percentCompleted}%`);
                                 }
         }
@@ -109,6 +123,7 @@ function uploadFiles(){
         .finally(
             function () {
                         console.log("[LOADER]: completed");
+                        hideProgressBar();
                     }
                 );
 
