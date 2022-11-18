@@ -52,17 +52,18 @@ function uploadFiles(){
                 }
         )
         .then(
-                res => {
-                        console.log(res.data)
-                        console.log(res.data.url)
+                    function(response) {
+                        console.log(response.data)
+                        console.log(response.data.url)
                     }
                 )
         .catch(
-            error => {
-            console.log("[LOADER ERROR]:"+error);
-        })
+                function(error) {
+                    console.log("[LOADER ERROR]:"+error);
+                }
+        )
         .finally(
-            () => {
+            function () {
                         console.log("[LOADER]: completed");
                     }
                 );
