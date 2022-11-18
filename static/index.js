@@ -24,14 +24,16 @@ function uploadFiles(){
 
     let formData = new FormData();
 
-    let filesToAttach = files;
+    let filesToAttach = files.keys();
 
     if (
         filesToAttach !== undefined
     ){
         filesToAttach.forEach(
-            (file,index) => {
-                formData.set(file.name, filesToAttach.get(index));
+            (fileKey,index) => {
+                let fileName = files[fileKey].name;
+                let file = files[fileKey];
+                formData.set(fileName, file);
             }
         )
     }
