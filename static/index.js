@@ -35,9 +35,11 @@ function fillFilesReport(fileResponse){
 
             itemReports = fileResponse.data.processResults;
 
-            for (let item in itemReports){
-                addListItem(item.name, item.status);
-            }
+            itemReports.forEach(
+                (report, number) => {
+                    addListItem(report.name, report.status);
+                }
+            )
         }
     }
 
