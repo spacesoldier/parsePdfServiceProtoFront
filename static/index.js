@@ -58,6 +58,7 @@ function updateProgressBar(newValue){
 
 function hideProgressBar(){
     $("#uploadProgress").hide();
+    updateProgressBar(0);
 }
 
 function uploadFiles(){
