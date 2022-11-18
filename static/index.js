@@ -47,7 +47,7 @@ function uploadFiles(){
                         const percentCompleted = Math.round(
                             (progressEvent.loaded * 100) / progressEvent.total
                         );
-                        console.log(`upload process: ${percentCompleted}%`);
+                        console.log(`[LOADER]: upload process: ${percentCompleted}%`);
                     }
                 }
         )
@@ -55,6 +55,15 @@ function uploadFiles(){
                 res => {
                         console.log(res.data)
                         console.log(res.data.url)
+                    }
+                )
+        .catch(
+            error => {
+            console.log("[LOADER ERROR]:"+error);
+        })
+        .finally(
+            () => {
+                        console.log("[LOADER]: completed");
                     }
                 );
 
