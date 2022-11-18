@@ -7,7 +7,8 @@ $(document).ready(
     );
 
 const api = axios.create({
-    baseURL: 'https://genplan.leaderhackdemo.pro/api',
+    // baseURL: 'https://genplan.leaderhackdemo.pro/api',
+    baseURL: 'http://localhost:8082/api',
     timeout: 120000,
 });
 
@@ -26,7 +27,13 @@ function addListItem(itemName, itemStatus){
     if (itemStatus in itemStatusValues){
         statusText = itemStatusValues[itemStatus];
     }
-    $("#statuslist").append('<li class="list-group-item">'+itemName+' '+statusText+'</li>');
+    $("#statuslist").append(
+        '<li class="list-group-item">' +
+        '<div class="row"><div class="col text-left">' +
+        ''+itemName+'</div>' +
+        '<div class="col"></div>' +
+        '<div class="col text-right">'+statusText+'</div>' +
+        '</div></li>');
 }
 
 function fillFilesReport(fileResponse){
