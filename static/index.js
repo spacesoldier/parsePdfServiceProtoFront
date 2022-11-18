@@ -39,4 +39,22 @@ function uploadFiles(){
 
     console.log("[LOADER]: uploading pdf files to server");
 
+    axios.post(
+                "/api/loadfiles",
+                formData,
+                {
+                    onUploadProgress: progressEvent => {
+                        const percentCompleted = Math.round(
+                            (progressEvent.loaded * 100) / progressEvent.total
+                        );
+                        console.log(`upload process: ${percentCompleted}%`);
+                    }
+                }
+        )
+        .then(res => {
+            console.log(res.data)
+            console.log(res.data.url)
+        })
+}
+
 }
