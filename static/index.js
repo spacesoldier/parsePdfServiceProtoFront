@@ -31,7 +31,7 @@ function uploadFiles(){
     ){
         filesToAttach.forEach(
             (file,index) => {
-                formData.append(file.name, filesToAttach.get(index));
+                formData.set(file.name, filesToAttach.get(index));
             }
         )
     }
