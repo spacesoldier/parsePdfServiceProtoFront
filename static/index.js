@@ -7,7 +7,7 @@ $(document).ready(
     );
 
 const api = axios.create({
-    baseURL: 'api/',
+    baseURL: '/api/',
     timeout: 120000,
 });
 
@@ -60,6 +60,7 @@ function uploadFiles(){
     //             }
     //     )
     api.post(
+        "loadfiles",
         {
             data: formData,
             headers: {
