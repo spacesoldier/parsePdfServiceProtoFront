@@ -16,6 +16,34 @@ function initClient() {
     console.log("[INIT]: app initialization");
 }
 
+var itemStatusValues = {
+    "OK": "Загружен успешно"
+}
+
+function addListItem(itemName, itemStatus){
+    let statusText = "Ошибка загрузки";
+
+    if (itemStatus in itemStatusValues){
+        statusText = itemStatusValues[itemStatus];
+    }
+    $("#statuslist").append('<li>'+itemName+' '+statusText+'</li>');
+}
+
+function fillFilesReport(fileResponse){
+    if (fileResponse.data !== undefined){
+        if (fileResponse.data.processResults !== undefined){
+
+            itemReports = fileResponse.data.processResults;
+
+            for (let item in itemReports){
+                addListItem(item.name, item.status);
+            }
+        }
+    }
+
+}
+
+
 function uploadFiles(){
 
     let fileElement = document.getElementById('loadPdfFilesInput');
@@ -45,21 +73,6 @@ function uploadFiles(){
 
     console.log("[LOADER]: uploading pdf files to server");
 
-    // axios.post(
-    //             "/api/loadfiles",
-    //             formData,
-    //             {
-    //                 headers: {
-    //                     "Content-Type": "multipart/form-data",
-    //                 },
-    //                 onUploadProgress: progressEvent => {
-    //                     const percentCompleted = Math.round(
-    //                         (progressEvent.loaded * 100) / progressEvent.total
-    //                     );
-    //                     console.log(`[LOADER]: upload process: ${percentCompleted}%`);
-    //                 }
-    //             }
-    //     )
     api.request(
         {
             method: "post",
@@ -70,11 +83,6 @@ function uploadFiles(){
                 "Accept": "*/*",
                 "Content-Type": "multipart/form-data",
             },
-            // transformRequest: (data, headers) => {
-            //     // !!! override data to return formData
-            //     // since axios converts that to string
-            //     return formData;
-            // },
             onUploadProgress: progressEvent => {
                                     const percentCompleted = Math.round(
                                                                         (progressEvent.loaded * 100) /
@@ -88,6 +96,7 @@ function uploadFiles(){
                     function(response) {
                         console.log(response.data)
                         console.log(response.data.url)
+                        fillFilesReport(response);
                     }
                 )
         .catch(
