@@ -8,6 +8,7 @@ $(document).ready(
 
 const api = axios.create({
     baseURL: 'https://genplan.leaderhackdemo.pro/api',
+    // baseURL: 'http://localhost:8082/api',
     timeout: 120000,
 });
 
@@ -37,7 +38,7 @@ function uploadFiles(){
         filesToAttach.forEach(
             (file,index) => {
                 let fileName = file.name;
-                formData.set(fileName, file);
+                formData.append("file", file);
             }
         )
     }
@@ -67,14 +68,13 @@ function uploadFiles(){
             data: formData,
             headers: {
                 "Accept": "*/*",
-                "Connection": "keep-alive",
                 "Content-Type": "multipart/form-data",
             },
-            transformRequest: (data, headers) => {
-                // !!! override data to return formData
-                // since axios converts that to string
-                return formData;
-            },
+            // transformRequest: (data, headers) => {
+            //     // !!! override data to return formData
+            //     // since axios converts that to string
+            //     return formData;
+            // },
             onUploadProgress: progressEvent => {
                                     const percentCompleted = Math.round(
                                                                         (progressEvent.loaded * 100) /
