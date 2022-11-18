@@ -24,9 +24,11 @@ function uploadFiles(){
 
     let formData = new FormData();
 
-    for (let file in files){
-        formData.set(file.name, file);
-    }
+    files.forEach(
+        (file, position) => {
+            formData.set(file.name, file);
+        }
+    )
 
     console.log("[LOADER]: uploading pdf files to server");
 
