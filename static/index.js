@@ -7,7 +7,7 @@ $(document).ready(
     );
 
 const api = axios.create({
-    baseURL: 'https://genplan.leaderhackdemo.pro/api/',
+    baseURL: 'https://genplan.leaderhackdemo.pro/api',
     timeout: 120000,
 });
 
@@ -59,12 +59,19 @@ function uploadFiles(){
     //                 }
     //             }
     //     )
-    api.post(
-        "loadfiles",
-        formData,
+    api.request(
         {
+            method: "post",
+            url: "/loadfiles",
+            responseType: "json",
+            data: formData,
             headers: {
                 "Content-Type": "multipart/form-data",
+            },
+            transformRequest: (data, headers) => {
+                // !!! override data to return formData
+                // since axios converts that to string
+                return formData;
             },
             onUploadProgress: progressEvent => {
                                     const percentCompleted = Math.round(
