@@ -45,7 +45,21 @@
                             </div>
                             <div class = "row">
                                 <div class="col">
-
+                                    <div class="input-group">
+                                        <label class="input-group-btn">
+                                        <span class="btn btn-outline-secondary">
+                                            pdf-файл<input type="file"
+                                                           id="pdfParser" name="pdfParser"
+                                                           accept="application/pdf"
+                                                           style="display: none;" multiple>
+                                        </span>
+                                        </label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <button type="submit"
+                                            class="btn btn-outline-secondary btn-block"
+                                            onclick="getParsedPdf()">Загрузить
+                                    </button>
                                 </div>
                             </div>
                             <div class = "row">
