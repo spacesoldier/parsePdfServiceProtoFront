@@ -51,10 +51,11 @@ function uploadFiles(){
                     }
                 }
         )
-        .then(res => {
-            console.log(res.data)
-            console.log(res.data.url)
-        })
-}
+        .then(
+                res => {
+                        console.log(res.data)
+                        console.log(res.data.url)
+                    }
+                );
 
 }
