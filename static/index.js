@@ -52,13 +52,8 @@ function showProgressBar(){
 function updateProgressBar(newValue){
     let progressBar = $("#uploadProgress");
 
-    progressBar.attr("aria-valuenow",newValue);
-    progressBar.animate(
-                        {
-                                    width: newValue+"%"
-                                },
-                        100
-                        );
+    progressBar.css('width', newValue+'%')
+                .attr("aria-valuenow",newValue);
 }
 
 function hideProgressBar(){
