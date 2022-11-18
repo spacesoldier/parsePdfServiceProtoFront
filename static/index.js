@@ -43,6 +43,9 @@ function uploadFiles(){
                 "/api/loadfiles",
                 formData,
                 {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    }
                     onUploadProgress: progressEvent => {
                         const percentCompleted = Math.round(
                             (progressEvent.loaded * 100) / progressEvent.total
