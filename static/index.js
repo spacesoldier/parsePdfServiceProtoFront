@@ -8,11 +8,11 @@ $(document).ready(
 
 const api = axios.create({
     baseURL: 'https://genplan.leaderhackdemo.pro/api',
-    // baseURL: 'http://localhost:8082/api',
     timeout: 120000,
 });
 
 function initClient() {
+    hideProgressBar();
     console.log("[INIT]: app initialization");
 }
 
@@ -26,7 +26,7 @@ function addListItem(itemName, itemStatus){
     if (itemStatus in itemStatusValues){
         statusText = itemStatusValues[itemStatus];
     }
-    $("#statuslist").append('<li>'+itemName+' '+statusText+'</li>');
+    $("#statuslist").append('<li class="list-group-item">'+itemName+' '+statusText+'</li>');
 }
 
 function fillFilesReport(fileResponse){
