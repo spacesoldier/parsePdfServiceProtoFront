@@ -66,6 +66,8 @@ function uploadFiles(){
             responseType: "json",
             data: formData,
             headers: {
+                "Accept": "*/*",
+                "Connection": "keep-alive",
                 "Content-Type": "multipart/form-data",
             },
             transformRequest: (data, headers) => {
